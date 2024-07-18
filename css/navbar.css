@@ -1,0 +1,73 @@
+.navbar {
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	display: flex;
+	user-select: none;
+	/* grid-template-columns: 2.5fr 1fr 1fr 1fr 8fr; */
+}
+
+.navbar .active {
+	background-color: darkred;
+	color: white;
+	text-transform: uppercase;
+}
+
+.navbar .active:hover {
+	opacity: 0.8;
+	background-color: rgb(55, 0, 0);
+}
+
+.navbar a {
+	display: block;
+	color: black;
+	padding: 1.5em 1.2em;
+	font-weight: bold;
+	font-size: 1em;
+	text-align: center;
+	letter-spacing: 2px;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.dropdown {
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.dropbtn {
+	width: 100%;
+	border: none;
+	outline: none;
+	background-color: inherit;
+	font-family: inherit;
+	/* Important for vertical align on mobile phones */
+	margin: 0;
+	/* Important for vertical align on mobile phones */
+	color: black;
+	padding: 1.5em 1.2em;
+	font-weight: bold;
+	font-size: 1em;
+	text-align: center;
+	letter-spacing: 2px;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+	opacity: 0.8;
+	background-color: rgb(225, 225, 225);
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}

@@ -1,0 +1,112 @@
+/* The Modal Background */
+.modal {
+	/* Hidden by default */
+	display: none;
+	/* Stay in place */
+	position: fixed;
+	/* Stay on top */
+	z-index: 1;
+	left: 0;
+	top: 0;
+	/* Full width */
+	width: 100%;
+	/* Full height */
+	height: 100%;
+	/* Enable scroll if needed */
+	overflow: auto;
+	/* Transparent background */
+	background-color: rgba(0, 0, 0, 0.4);
+	animation-duration: 0.7s;
+}
+
+.modal h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	letter-spacing: 2px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+	/* Show by default */
+	display: block;
+	background-color: #fefefe;
+	margin: 5% 20%;
+	padding: 20px;
+	border: 1px solid #888;
+	border-radius: 10px;
+	/* width: 50%; Could be more or less, depending on screen size */
+	animation-name: animate_fade_in;
+	animation-duration: 0.6s;
+}
+
+.modal-content .text-content {
+	padding: 5%;
+	text-align: center;
+	line-height: 2em;
+	font-size: 1.2em;
+}
+
+.modal-content .text-content p {
+	text-align: justify;
+}
+
+.modal-content .text-content hr {
+	width: 5em;
+}
+
+.modal-content .image-setting {
+	width: 90%;
+}
+
+.modal-content a {
+	text-decoration: none;
+	color: black;
+	transition: 0.5s;
+}
+
+.modal-content a:hover {
+	opacity: 60%;
+	transition: 0.5s;
+}
+
+/* The Close Button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 3em;
+	font-weight: bold;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes animate_fade_in {
+	from {
+		opacity: 0;
+		transform: translateY(50%);
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes animate_fade_out {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
