@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Architectural Origami Design</title>
+	<link href='image/favicon.ico' rel='icon' />
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/modal.css">
+	<link rel="stylesheet" href="css/navbar.css">
+	<script src="https://kit.fontawesome.com/4880f89820.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="navbar">
+		<a class="active">Architectural Origami Design</a>
+		<div class="dropdown">
+			<button class="dropbtn">File
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a onclick="SVGDrawer.DownloadSVG('CreasePatternSVG');">Export SVG</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Model
+				<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a onclick="DrawPattern( new Graph( Model.Alphabet_H ) );">Alphabet "H"</a>
+				<a onclick="DrawPattern( new Graph( Model.Pattern_Heart ) );">Pattern "Heart"</a>
+				<a onclick="DrawRandomPattern();">Random Pattern</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">Design
+				<i class="fa fa-caret-down"></i>
+			</button>
+		</div>
+		<a id="NavButton_About">About</a>
+	</div>
+
+	<!-- Main Content -->
+	<div class="main-content">
+		<div class="flex-row">
+			<div class="grid text-center">
+				<div class="text-content">
+					<p class="title">Design Pattern</p>
+					<p>Input: Block Representation</p>
+				</div>
+				<div id="BlockPattern_SVG"></div>
+			</div>
+			<div class="grid text-center">
+				<div class="text-content">
+					<p class="title">Crease Pattern</p>
+					<p>Output: Generated Crease Pattern</p>
+				</div>
+				<div id="CreasePattern_SVG"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bottom Content -->
+	<div class="bottom-content">
+		<div class="text-center small-font">
+			<p>Architectural Origami Design. Copyright © 2023 Meng-Huan Lu. All rights reserved.</p>
+		</div>
+	</div>
+
+	<!-- About Modal -->
+	<div id="Modal_About" class="modal">
+		<div id="ModalContent_About" class="modal-content text-center">
+			<span class="close" id="ModalCloseButton_About">&times;</span>
+			<div class="text-content">
+				<h2>設計理念</h2>
+				<hr>
+				<p>本專案為基於網頁語言開發的摺紙設計網站。有別於一般傳統透過繪製線段來生成摺痕圖的方式，本系統是先判斷輸入圖樣的結構，再轉換為對應的 Pattern
+					來生成摺痕圖；同時透過簡潔直觀的操作，讓使用者可以設計出各式有趣的立體結構模型。<br>
+					此外，透過 SVG 技術生成摺痕圖可以使用向量格式儲存摺痕圖，以精確紀錄摺痕圖的位置，並方便後製、出圖、以及進行模擬折疊的工作。希望這份專案可以幫助到熱愛摺紙的每一位夥伴。
+				</p>
+				<br>
+				<h2>靈感來源</h2>
+				<hr>
+				<p>本專案的設計靈感源自於美國 MIT 教授 Eric Demaine 開發的 <span><a
+							href="http://martindemaine.org/papers/MazeFolding_Origami5/paper.pdf" target="_blank">
+							Origami Maze Font </a></span> 程式。Origami Maze Font 為透過 6 種可互相組合的 Pattern
+					來拼出可產生牆面結構的摺痕圖，進而設計出各式各樣具有牆面結構的作品。<br>
+					Origami Maze Font 設計出的作品可視為二維平面的組合結構，從數學模型來看並不具有厚度，這使我思考是否可以在每個牆面增加厚度，或許可以擴展出形態更多樣的立體作品。<br>
+					因此我基於 Eric Demaine 的方法，設計出 13 種「可摺出三維結構」且「可互相組合」的立體結構，再透過規則產生可完整摺出輸入圖案的摺痕圖。
+					為了讓使用者方便設計作品，使用者可以透過滑鼠點擊方格來指定浮雕的區塊，本網站可以即時運算出任何圖案對應的摺痕圖。
+				</p>
+				<div id="SegmentPattern_SVG"></div>
+				<h6 style="margin-top: 0;">5 種基本結構</h6>
+				<div id="PrimitivePattern_SVG"></div>
+				<h6 style="margin-top: 0; margin-bottom: 1em;">13 種立體結構</h6>
+				<br>
+				<h2>摺疊模擬</h2>
+				<hr>
+				<p>若要針對摺痕圖進行模擬摺疊，可以先產生摺痕圖後，再匯入 Amanda Ghassaei 設計的 <span><a href="https://origamisimulator.org/"
+							target="_blank"> Origami Simulator </a></span>
+					來模擬折疊過程並預測摺紙模型的外觀，這將有助於設計師快速開發出適合的摺疊產品。<br>
+					同時，這款軟體支援本專案輸出的所有摺痕圖格式，並可透過數值計算準確模擬出摺痕圖的摺疊動作，使摺疊操作可視化。<br>
+					若您的產品需要有效率地計算摺疊商品的外型與體積，同時預測折疊過程的運動軌跡變化，這款軟體對您將會相當有幫助。
+				</p>
+				<img class="image-setting" src="image/demo.gif">
+			</div>
+
+		</div>
+	</div>
+
+	<script src="js/control/modal_about.js"></script>
+	<script src="js/StringClass.js"></script>
+	<script src="js/segment.js"></script>
+	<script src="js/primitives.js"></script>
+	<script src="js/GraphDrawer.js"></script>
+	<script src="js/SVGDrawer.js"></script>
+	<script src="js/model.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>
